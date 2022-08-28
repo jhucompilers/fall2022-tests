@@ -2,8 +2,8 @@
 
 require 'open3'
 
-# Run a test for Assignment 1 MS1.
-# The ASSIGN01_MS1_DIR environment variable must be set to the directory
+# Run a test for Assignment 1.
+# The ASSIGN01_DIR environment variable must be set to the directory
 # containing the "minilang" executable.
 
 # ----------------------------------------------------------------------
@@ -103,8 +103,8 @@ end
 # Main script
 # ----------------------------------------------------------------------
 
-raise 'ASSIGN01_MS1_DIR environment variable must be set' if !ENV.has_key?('ASSIGN01_MS1_DIR')
-exe_dir = ENV['ASSIGN01_MS1_DIR']
+raise 'ASSIGN01_DIR environment variable must be set' if !ENV.has_key?('ASSIGN01_DIR')
+exe_dir = ENV['ASSIGN01_DIR']
 
 # make sure executable exists
 exe = "#{exe_dir}/minilang"
