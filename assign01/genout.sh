@@ -18,12 +18,12 @@ if [ -f "data/${testname}.in" ]; then
   test_data=$(<data/${testname}.in)
 fi
 
-(echo "$test_data" | $ASSIGN02_DIR/interp $1 | egrep -i -v "^Debug:") > $expected_output_file 2> $expected_error_file
+(echo "$test_data" | $ASSIGN01_DIR/minilang $1 | egrep -i -v "^Debug:") > $expected_output_file 2> $expected_error_file
 
-if [ -f $expected_output_file ] && [ ! -s $expected_output_file ]; then
-  # expected output file is empty, delete it
-  rm $expected_output_file
-fi
+#if [ -f $expected_output_file ] && [ ! -s $expected_output_file ]; then
+#  # expected output file is empty, delete it
+#  rm $expected_output_file
+#fi
 
 if [ -f $expected_error_file ] && [ ! -s $expected_error_file ]; then
   # expected error file is empty, delete it
