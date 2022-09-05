@@ -23,6 +23,7 @@ Operator precedence (literals with multiple operators)
 
 Mixed additive and multiplicative operators
 Comparisons of values computed using aritmetic
+Use of parentheses to force evaluation order
 
 Variables and assignments
 
