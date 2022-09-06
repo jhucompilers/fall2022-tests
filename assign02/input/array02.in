@@ -1,9 +1,12 @@
+var MAX;
+MAX = 20;
+
 var result;
 result = mkarr();
 
 var i;
 i = 0;
-while (i < 40) {
+while (i < MAX) {
   push(result, 0);
   i = i + 1;
 }
@@ -23,4 +26,4 @@ while (i < len(result)) {
   i = i + 1;
 }
 
-get(result, 39);
+get(result, MAX - 1);
