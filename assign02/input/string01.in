@@ -1,0 +1,5 @@
+var s;
+
+s = "hello, world\n";
+
+print(s);
