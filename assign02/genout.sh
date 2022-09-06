@@ -8,6 +8,8 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
+mkdir -p expected_output expected_error
+
 testname=$(basename $1 .in)
 
 expected_output_file=expected_output/$testname.out
