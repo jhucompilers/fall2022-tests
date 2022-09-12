@@ -1,0 +1,5 @@
+var s;
+s = "hello, world";
+var n;
+n = strlen(s);
+println(n);

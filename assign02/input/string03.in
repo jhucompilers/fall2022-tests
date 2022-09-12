@@ -1,0 +1,7 @@
+var s1;
+var s2;
+s1 = "hello, ";
+s2 = "world";
+var s3;
+s3 = strcat(s1, s2);
+println(s3);
