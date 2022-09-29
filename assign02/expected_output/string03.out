@@ -1,4 +1,4 @@
 a
 b	c
-\"foo"\
+"foo"
 Result: 44
