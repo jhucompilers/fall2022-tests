@@ -121,7 +121,7 @@ raise "Usage: ./run_test.rb <testname>" if ARGV.length != 1
 testname = ARGV.shift
 
 # Make sure that input file exists (otherwise, the test doesn't exist)
-input_file = "input/#{testname}.in"
+input_file = "input/#{testname}.c"
 raise "No such test input #{input_file}" if !(FileTest.readable?(input_file))
 
 # Make sure that either the expected output file or expected error file exists
@@ -138,7 +138,7 @@ if $OPT == '' && FileTest.readable?("option/#{testname}.in")
 end
 
 # Run the executable on the named test
-cmd = [exe, '-s', input_file]
+cmd = [exe, '-a', input_file]
 #puts "cmd is: #{cmd.join(' ')}"
 stdin_data = ''
 if FileTest.readable?("data/#{testname}.in")
