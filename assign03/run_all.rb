@@ -2,10 +2,10 @@
 
 testcases = []
 
-IO.popen("ls input/*.in") do |f|
+IO.popen("ls input/*.c") do |f|
   f.each_line do |line|
     line.chomp!
-    if m = /^input\/(.*)\.in$/.match(line)
+    if m = /^input\/(.*)\.c$/.match(line)
       testcases.push(m[1])
     end
   end

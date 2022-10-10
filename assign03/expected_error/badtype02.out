@@ -1,1 +1,1 @@
-Error:input/badtype02.c:1:1: 'const' and 'volatile' cannot be used with 'void'
+input/badtype02.c:1:1:Error: 'const' and 'volatile' cannot be used with 'void'

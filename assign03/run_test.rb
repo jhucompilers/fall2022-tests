@@ -51,7 +51,7 @@ def find_error(filename)
   tuple = nil
   File.open(filename) do |f|
     f.each_line do |line|
-      if tuple.nil? && (m = /^([^:]+):(\d+):(\d+): Error: .*$/.match(line))
+      if tuple.nil? && (m = /^([^:]+):(\d+):(\d+):\s*Error: .*$/.match(line))
         tuple = [m[1], m[2], m[3]]
       end
     end

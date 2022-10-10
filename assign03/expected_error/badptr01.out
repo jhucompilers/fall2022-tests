@@ -1,1 +1,1 @@
-Error:input/badptr01.c:3:3: Dereference of non-pointer
+input/badptr01.c:3:3:Error: Dereference of non-pointer
