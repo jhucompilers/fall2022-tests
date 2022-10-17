@@ -1,0 +1,13 @@
+Structs
+
+Nested struct instance
+Array of struct elements
+Variable declaration with mixed struct/pointer to struct/array of struct declarators
+
+Type checking
+
+assign array to pointer
+
+Error checking
+
+cannot assign to array
