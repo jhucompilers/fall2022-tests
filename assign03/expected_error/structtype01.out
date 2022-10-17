@@ -1,1 +1,0 @@
-nearly_cc: node_base.cpp:66: std::shared_ptr<Type> NodeBase::get_type() const: Assertion `m_type' failed.
