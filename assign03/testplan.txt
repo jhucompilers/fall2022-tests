@@ -49,4 +49,4 @@ non-numeric operands to logical operators (badexpr05, badexpr06) ✓
 
 non-numeric value returned from function returning int (or other integer type) (badassign06) ✓
 
-type checking error in a deeply nested scope
+type checking error in a deeply nested scope (badassign07) ✓
