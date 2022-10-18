@@ -34,3 +34,7 @@ pointer assignment which drops volatile qualifier (badassign03) ✓
 [additional error checking tests could be taking examples that
 are valid, and modifying them in a small way to produce an
 example that is not valid]
+
+assignment to literal (badassign04) ✓
+assignment to computed value (badassign05) ✓
+
