@@ -4,7 +4,8 @@ Nested struct instance (structtype02) ✓
 Array of struct elements (structtype03) ✓
 Variable declaration with mixed struct/pointer to struct/array of struct declarators (structtype04) ✓
 struct type with array member (structtype05, structtype06) ✓
-array of pointers to structs
+array of pointers to structs (structtype07) ✓
+recursive struct (i.e., linked list node) (structtype08) ✓
 
 Type representation
 
@@ -21,6 +22,8 @@ Type checking
 
 assign array to pointer should be allowed
 a pointer assignment which *adds* qualifiers should be allowed
+subscripting a pointer should be allowed
+a pointer to pointer should be allowed to be subscripted twice
 
 Error checking
 
