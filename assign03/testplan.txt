@@ -1,13 +1,29 @@
 Structs
 
-Nested struct instance
-Array of struct elements
-Variable declaration with mixed struct/pointer to struct/array of struct declarators
+Nested struct instance (structtype02) ✓
+Array of struct elements (structtype03) ✓
+Variable declaration with mixed struct/pointer to struct/array of struct declarators (structtype04) ✓
+struct type with array member (structtype05, structtype06) ✓
+array of pointers to structs
+
+Type representation
+
+char, signed char, unsigned char variables (basictype01) ✓
+short, signed short, unsigned short variables (basictype02) ✓
+int, signed int, unsigned int variables (basictype03) ✓
+long, signed long, unsigned long variables (basictype04) ✓
+"unsigned" and "signed" can be used to define variables (implicit int) (basictype05) ✓
+"long int" and "short int" are allowed (basictype06) ✓
+unusual orderings of basic type keywords (basictype07) ✓
+qualified basic types (really only volatile will make sense due to lack of initialization) (basictype08) ✓
 
 Type checking
 
-assign array to pointer
+assign array to pointer should be allowed
+a pointer assignment which *adds* qualifiers should be allowed
 
 Error checking
 
-cannot assign to array
+assignment to array should not be allowed
+pointer assignment which drops const qualifier (badassign01)
+pointer assignment which drops volatile qualifier (badassign02)
