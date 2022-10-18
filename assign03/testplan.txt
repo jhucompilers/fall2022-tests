@@ -24,6 +24,7 @@ assign array to pointer should be allowed (example06) ✓
 a pointer assignment which *adds* qualifiers should be allowed (example07) ✓
 subscripting a pointer should be allowed (example08) ✓
 a pointer to pointer should be allowed to be subscripted twice (example09) ✓
+poiner arithmetic should be allowed (example10, example11) ✓
 
 Error checking
 
