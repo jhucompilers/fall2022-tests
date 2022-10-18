@@ -20,13 +20,17 @@ qualified basic types (really only volatile will make sense due to lack of initi
 
 Type checking
 
-assign array to pointer should be allowed
-a pointer assignment which *adds* qualifiers should be allowed
-subscripting a pointer should be allowed
-a pointer to pointer should be allowed to be subscripted twice
+assign array to pointer should be allowed (example06) ✓
+a pointer assignment which *adds* qualifiers should be allowed (example07) ✓
+subscripting a pointer should be allowed (example08) ✓
+a pointer to pointer should be allowed to be subscripted twice (example09) ✓
 
 Error checking
 
-assignment to array should not be allowed
-pointer assignment which drops const qualifier (badassign01)
-pointer assignment which drops volatile qualifier (badassign02)
+assignment to array should not be allowed (badassign02) ✓
+pointer assignment which drops const qualifier (badassign01) ✓
+pointer assignment which drops volatile qualifier (badassign03) ✓
+
+[additional error checking tests could be taking examples that
+are valid, and modifying them in a small way to produce an
+example that is not valid]
