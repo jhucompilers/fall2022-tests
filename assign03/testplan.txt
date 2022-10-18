@@ -24,7 +24,13 @@ assign array to pointer should be allowed (example06) ✓
 a pointer assignment which *adds* qualifiers should be allowed (example07) ✓
 subscripting a pointer should be allowed (example08) ✓
 a pointer to pointer should be allowed to be subscripted twice (example09) ✓
-poiner arithmetic should be allowed (example10, example11) ✓
+pointer arithmetic should be allowed (example10, example11) ✓
+
+Expressions
+
+unary operators - and ! should be supported (example12, example13) ✓
+logical operators || and && should be supported (example14, example15) ✓
+relational operators should be supported (example16, example17) ✓
 
 Error checking
 
@@ -38,4 +44,7 @@ example that is not valid]
 
 assignment to literal (badassign04) ✓
 assignment to computed value (badassign05) ✓
+non-numeric operands to relational operators (badexpr03, badexpr04) ✓
+non-numeric operands to logical operators
 
+non-numeric value returned from function returning int (or other integer type)
