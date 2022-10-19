@@ -25,6 +25,7 @@ a pointer assignment which *adds* qualifiers should be allowed (example07) ✓
 subscripting a pointer should be allowed (example08) ✓
 a pointer to pointer should be allowed to be subscripted twice (example09) ✓
 pointer arithmetic should be allowed (example10, example11) ✓
+variables defined in nested scopes should be handled correctly (example18) ✓
 
 Expressions
 
