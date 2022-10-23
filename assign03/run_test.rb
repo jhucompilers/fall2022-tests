@@ -139,8 +139,10 @@ end
 
 # Run the executable on the named test
 cmd = [exe, '-a', input_file]
-if ENV.has_key?('EXTRA_OPT')
-  cmd.insert(1, ENV['EXTRA_OPT'])
+if ENV.has_key?('EXTRA_OPTS')
+  ENV['EXTRA_OPTS'].split(/\s+/) do |opt|
+    cmd.insert(1, opt)
+  end
 end
 #puts "cmd is: #{cmd.join(' ')}"
 stdin_data = ''
