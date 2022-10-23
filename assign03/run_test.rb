@@ -139,6 +139,9 @@ end
 
 # Run the executable on the named test
 cmd = [exe, '-a', input_file]
+if ENV.has_key?('EXTRA_OPT')
+  cmd.insert(1, ENV['EXTRA_OPT'])
+end
 #puts "cmd is: #{cmd.join(' ')}"
 stdin_data = ''
 if FileTest.readable?("data/#{testname}.in")
