@@ -26,24 +26,50 @@ def write_output(dirname, filename, s)
   #end
 end
 
-def check_actual_vs_expected_output(actual_output_filename, expected_output_filename, exit_code)
+def check_actual_vs_expected_output(testname, exit_code)
   if exit_code != 0
     puts "Program exited with non-zero exit code"
     exit 1
   end
 
-  # Diff actual output against expected output
-  cmd = ['diff', actual_output_filename, expected_output_filename]
-  stdout_str, stderr_str, status = Open3.capture3(*cmd, stdin_data: '')
-  if status.success?
-    puts "Test passed!"
-    exit 0
-  else
-    puts "Test failed"
-    puts "Diff output:"
-    puts stdout_str
-    exit 1
+  actual_output_filename = "actual_output/#{testname}.out"
+
+  # There could be multiple expected output files.
+  # Check program's output against each of them.
+  # If it matches any expected output exactly, great, the test passes.
+  # If it doesn't match any of them, then print the diffs against
+  # each one.
+
+  # Pairs of the form [expected_output_filename, diff_output]
+  results = []
+
+  IO.popen("ls expected_output/#{testname}*.out") do |f|
+    f.each_line do |expected_output_filename|
+      expected_output_filename.rstrip!
+
+      cmd = ['diff', actual_output_filename, expected_output_filename]
+      stdout_str, stderr_str, status = Open3.capture3(*cmd, stdin_data: '')
+      if status.success?
+        # Found an exact match!
+        puts "Test passed!"
+        #STDERR.puts "Successful match against #{expected_output_filename}"
+        exit 0
+      end
+
+      # record the failed match
+      results.push([expected_output_filename, stdout_str])
+    end
   end
+
+  # Diff actual output against expected output
+  puts "Actual output did not match expected output!"
+  results.each do |pair|
+    puts "Expected output file: #{pair[0]}"
+    puts "Diff:"
+    print pair[1]
+  end
+
+  exit 1
 end
 
 def find_error(filename)
@@ -167,7 +193,7 @@ write_output('actual_output', "#{testname}.out", stdout_str)
 write_output('actual_error', "#{testname}.out", stderr_str)
 
 if FileTest.readable?(expected_output_filename)
-  check_actual_vs_expected_output("actual_output/#{testname}.out", expected_output_filename, status.exitstatus)
+  check_actual_vs_expected_output(testname, status.exitstatus)
 else
   check_actual_vs_expected_error("actual_error/#{testname}.out", expected_error_filename, status.exitstatus)
 end
