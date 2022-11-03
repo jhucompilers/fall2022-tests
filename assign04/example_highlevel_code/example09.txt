@@ -19,16 +19,18 @@ sum:
 	mov_l    vr12, vr15
 	jmp      .L1
 .L0:
-	mul_l    vr14, vr12, $4
-	add_q    vr15, vr10, vr14
-	add_l    vr16, vr13, (vr15)
-	mov_l    vr13, vr16
-	mov_l    vr17, $1
-	add_l    vr18, vr12, vr17
-	mov_l    vr12, vr18
+	sconv_lq vr14, vr12
+	mul_q    vr15, vr14, $4
+	add_q    vr16, vr10, vr15
+	mov_l    vr18, (vr16)
+	add_l    vr17, vr13, vr18
+	mov_l    vr13, vr17
+	mov_l    vr19, $1
+	add_l    vr20, vr12, vr19
+	mov_l    vr12, vr20
 .L1:
-	cmplt_l  vr19, vr12, vr11
-	cjmp_t   vr19, .L0
+	cmplt_l  vr21, vr12, vr11
+	cjmp_t   vr21, .L0
 	mov_l    vr0, vr13
 	jmp      .Lsum_return
 .Lsum_return:
@@ -40,22 +42,25 @@ main:
 	enter    $12
 	localaddr vr11, $0
 	mov_l    vr12, $0
-	mul_l    vr13, vr12, $4
-	add_q    vr14, vr11, vr13
-	mov_l    vr15, $1
-	mov_l    (vr14), vr15
+	sconv_lq vr13, vr12
+	mul_q    vr14, vr13, $4
+	add_q    vr15, vr11, vr14
+	mov_l    vr16, $1
+	mov_l    (vr15), vr16
 	localaddr vr11, $0
 	mov_l    vr12, $1
-	mul_l    vr13, vr12, $4
-	add_q    vr14, vr11, vr13
-	mov_l    vr15, $2
-	mov_l    (vr14), vr15
+	sconv_lq vr13, vr12
+	mul_q    vr14, vr13, $4
+	add_q    vr15, vr11, vr14
+	mov_l    vr16, $2
+	mov_l    (vr15), vr16
 	localaddr vr11, $0
 	mov_l    vr12, $2
-	mul_l    vr13, vr12, $4
-	add_q    vr14, vr11, vr13
-	mov_l    vr15, $3
-	mov_l    (vr14), vr15
+	sconv_lq vr13, vr12
+	mul_q    vr14, vr13, $4
+	add_q    vr15, vr11, vr14
+	mov_l    vr16, $3
+	mov_l    (vr15), vr16
 	localaddr vr11, $0
 	mov_q    vr1, vr11
 	mov_l    vr12, $3
