@@ -24,8 +24,7 @@ main:
 	mov_l    vr13, $2
 	mov_l    vr12, vr13
 .L0:
-	mov_l    vr14, $0
-	mov_l    vr0, vr14
+	mov_l    vr0, vr12
 	jmp      .Lmain_return
 .Lmain_return:
 	leave    $0

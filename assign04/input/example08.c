@@ -11,5 +11,5 @@ int main(void) {
     c = 2;
   }
 
-  return 0;
+  return c;
 }
