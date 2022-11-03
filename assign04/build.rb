@@ -11,6 +11,7 @@ def gen_helper_funcs(output_filename)
 
 s_str_fmt: .string "%s"
 s_i32_fmt: .string "%d"
+s_newline: .string "\\n"
 
 	.section .text
 
@@ -57,6 +58,21 @@ read_i32:
 	movq %rsp, %rsi
 	call scanf
 	movl (%rsp), %eax
+	addq $8, %rsp
+	ret
+
+/*
+ * void print_nl(void);
+ *
+ * Print a single newline character.
+ */
+	.globl print_nl
+print_nl:
+	subq $8, %rsp
+	xorl %eax, %eax
+	movq $s_str_fmt, %rdi
+	movq $s_newline, %rsi
+	call printf
 	addq $8, %rsp
 	ret
 EOF
