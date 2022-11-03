@@ -21,7 +21,7 @@ main:
 	mov_l    vr10, vr14
 	cmplt_l  vr15, vr10, vr11
 	cjmp_t   vr15, .L0
-	mov_l    vr0, vr10
+	mov_l    vr0, vr12
 	jmp      .Lmain_return
 .Lmain_return:
 	leave    $0
