@@ -6,9 +6,9 @@
 /* variable 'y' allocated vreg 11 */
 /* variable 'z' allocated vreg 12 */
 /* Function 'main' uses 0 bytes of memory and 13 virtual registers */
-
-/* Function 'sum' uses 4 virtual registers for locals and temp values */
-/* function 'sum' requires 32 total bytes of memory storage */
+/* Function 'sum' uses 32 total bytes of memory storage for vregs */
+/* Function 'sum': placing vreg storage at offset -32 from %rbp */
+/* Function 'sum': 32 bytes of local storage allocated in stack frame */
 	.section .text
 
 	.globl sum
@@ -29,9 +29,9 @@ sum:
 	addq     $32, %rsp
 	popq     %rbp
 	ret      
-
-/* Function 'main' uses 4 virtual registers for locals and temp values */
-/* function 'main' requires 32 total bytes of memory storage */
+/* Function 'main' uses 32 total bytes of memory storage for vregs */
+/* Function 'main': placing vreg storage at offset -32 from %rbp */
+/* Function 'main': 32 bytes of local storage allocated in stack frame */
 
 	.globl main
 main:
