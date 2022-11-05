@@ -1,7 +1,6 @@
 /* variable 'c' allocated vreg 10 */
 /* Function 'ctoi' uses 0 bytes of memory and 11 virtual registers */
 /* Function 'main' uses 0 bytes of memory and 10 virtual registers */
-/* yarplorian: 11 */
 	.section .text
 
 	.globl ctoi

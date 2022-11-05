@@ -1,7 +1,6 @@
 /* variable 'c' allocated vreg 10 */
 /* Function 'ctoi' uses 0 bytes of memory and 11 virtual registers */
 /* Function 'main' uses 0 bytes of memory and 10 virtual registers */
-/* yarplorian: 11 */
 /* Function 'ctoi' uses 16 total bytes of memory storage for vregs */
 /* Function 'ctoi': placing vreg storage at offset -16 from %rbp */
 /* Function 'ctoi': 16 bytes of local storage allocated in stack frame */
