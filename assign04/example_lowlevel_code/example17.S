@@ -1,4 +1,3 @@
-/* variable 'n' allocated vreg 10 */
 /* variable 'a' allocated vreg 10 */
 /* variable 'b' allocated vreg 11 */
 /* Function 'main' uses 0 bytes of memory and 12 virtual registers */

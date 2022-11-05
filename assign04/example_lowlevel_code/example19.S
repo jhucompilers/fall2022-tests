@@ -1,6 +1,6 @@
-/* variable 'n' allocated vreg 10 */
 /* variable 'c' allocated vreg 10 */
 /* Function 'main' uses 0 bytes of memory and 11 virtual registers */
+/* yarplorian: 11 */
 /* Function 'main' uses 24 total bytes of memory storage for vregs */
 /* Function 'main': placing vreg storage at offset -24 from %rbp */
 /* Function 'main': 32 bytes of local storage allocated in stack frame */

@@ -1,5 +1,4 @@
 /* variable 'n' allocated vreg 10 */
-/* variable 'n' allocated vreg 10 */
 /* Function 'main' uses 0 bytes of memory and 11 virtual registers */
 	.section .text
 
@@ -20,8 +19,8 @@ main:
 	mov_l    vr13, $0
 	cmpgt_l  vr14, vr10, vr13
 	cjmp_t   vr14, .L0
-	mov_l    vr15, $0
-	mov_l    vr0, vr15
+	mov_l    vr11, $0
+	mov_l    vr0, vr11
 	jmp      .Lmain_return
 .Lmain_return:
 	leave    $0
