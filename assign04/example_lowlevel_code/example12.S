@@ -1,5 +1,3 @@
-/* variable 'x' allocated vreg 10 */
-/* variable 'y' allocated vreg 11 */
 /* variable 'p' allocated 8 bytes of storage at offset 0 */
 /* Function 'main' uses 8 bytes of memory and 10 virtual registers */
 /* Function 'main': placing memory variables at offset -8 from %rbp */
