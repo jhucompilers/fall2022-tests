@@ -10,5 +10,5 @@ int main(void) {
     i = i + 1;
   } while (i < n);
 
-  return i;
+  return sum;
 }

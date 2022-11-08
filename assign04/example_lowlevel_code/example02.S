@@ -2,8 +2,9 @@
 /* variable 'i' allocated vreg 11 */
 /* variable 'sum' allocated vreg 12 */
 /* Function 'main' uses 0 bytes of memory and 13 virtual registers */
-/* function 'main' uses 5 virtual registers for locals and temp values */
-/* function 'main' requires 40 total bytes of memory storage */
+/* Function 'main' uses 48 total bytes of memory storage for vregs */
+/* Function 'main': placing vreg storage at offset -48 from %rbp */
+/* Function 'main': 48 bytes of local storage allocated in stack frame */
 	.section .text
 
 	.globl main

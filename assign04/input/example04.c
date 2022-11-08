@@ -5,7 +5,7 @@ int main(void) {
   n = 11;
 
   for (i = 0; i <= n; i = i + 1) {
-    sum = sum + 1;
+    sum = sum + i;
   }
 
   return sum;
