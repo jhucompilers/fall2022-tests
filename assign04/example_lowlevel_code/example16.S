@@ -9,16 +9,16 @@ _str0: .string "Hello, world\n"
 
 	.globl main
 main:
-	pushq    %rbp
+	pushq    %rbp                /* enter    $0 */
 	movq     %rsp, %rbp
 	subq     $16, %rsp
-	movq     $_str0, -8(%rbp)
-	movq     -8(%rbp), %rdi
-	call     print_str
-	movl     $0, -8(%rbp)
-	movl     -8(%rbp), %eax
-	jmp      .Lmain_return
+	movq     $_str0, -8(%rbp)    /* mov_q    vr10, $_str0 */
+	movq     -8(%rbp), %rdi      /* mov_q    vr1, vr10 */
+	call     print_str           /* call     print_str */
+	movl     $0, -8(%rbp)        /* mov_l    vr10, $0 */
+	movl     -8(%rbp), %eax      /* mov_l    vr0, vr10 */
+	jmp      .Lmain_return       /* jmp      .Lmain_return */
 .Lmain_return:
-	addq     $16, %rsp
+	addq     $16, %rsp           /* leave    $0 */
 	popq     %rbp
-	ret      
+	ret                          /* ret       */

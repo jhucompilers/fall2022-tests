@@ -9,23 +9,23 @@
 
 	.globl main
 main:
-	pushq    %rbp
+	pushq    %rbp                /* enter    $4 */
 	movq     %rsp, %rbp
 	subq     $32, %rsp
-	leaq     -8(%rbp), %r10
+	leaq     -8(%rbp), %r10      /* localaddr vr11, $0 */
 	movq     %r10, -16(%rbp)
-	movq     -16(%rbp), %r10
+	movq     -16(%rbp), %r10     /* mov_q    vr10, vr11 */
 	movq     %r10, -24(%rbp)
-	movl     $42, -16(%rbp)
-	movq     -24(%rbp), %r11
+	movl     $42, -16(%rbp)      /* mov_l    vr11, $42 */
+	movq     -24(%rbp), %r11     /* mov_l    (vr10), vr11 */
 	movl     -16(%rbp), %r10d
 	movl     %r10d, (%r11)
-	leaq     -8(%rbp), %r10
+	leaq     -8(%rbp), %r10      /* localaddr vr11, $0 */
 	movq     %r10, -16(%rbp)
-	movq     -16(%rbp), %r11
+	movq     -16(%rbp), %r11     /* mov_l    vr0, (vr11) */
 	movl     (%r11), %eax
-	jmp      .Lmain_return
+	jmp      .Lmain_return       /* jmp      .Lmain_return */
 .Lmain_return:
-	addq     $32, %rsp
+	addq     $32, %rsp           /* leave    $4 */
 	popq     %rbp
-	ret      
+	ret                          /* ret       */
