@@ -5,7 +5,7 @@ long read_i64(void);
 void print_i64(long n);
 void print_nl(void);
 
-void read_m10x10(long arr[0]) {
+void read_m10x10(long *arr) {
   int i;
   for (i = 0; i < 100; i = i + 1) {
     arr[i] = read_i64();
