@@ -91,6 +91,7 @@ read_i64:
 	movq %rsp, %rsi
 	call scanf
 	movq (%rsp), %rax
+	addq $8, %rsp
 	ret
 
 /*
