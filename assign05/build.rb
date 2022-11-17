@@ -127,14 +127,25 @@ EOF
   end
 end
 
+option = ''
+if ARGV.length > 0 && ARGV[0].start_with?('-')
+  option = ARGV.shift
+end
+
 testname = ARGV.shift
-raise "Usage: build.rb <testname>" if testname.nil?
+raise "Usage: build.rb [option] <testname>" if testname.nil?
 
 raise "ASSIGN05_DIR environment variable must be defined" if !ENV.has_key?('ASSIGN05_DIR')
 compiler_exe = "#{ENV['ASSIGN05_DIR']}/nearly_cc"
 raise "#{compiler_exe} does not exist or is not executable" if !FileTest.executable?(compiler_exe)
 
-out, err, status = Open3.capture3(compiler_exe, "input/#{testname}.c", :stdin_data => '')
+cmd = [compiler_exe]
+if option != ''
+  cmd.push(option)
+end
+cmd.push("input/#{testname}.c")
+
+out, err, status = Open3.capture3(*cmd , :stdin_data => '')
 #puts "out is #{out}"
 if !status.success?
   STDERR.puts "nearly_cc command failed"

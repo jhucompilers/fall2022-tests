@@ -1,11 +1,17 @@
 #! /usr/bin/env ruby
 
-raise "Usage: ./run_test.rb <testname>" if ARGV.length != 1
+option = ''
+
+if ARGV.length > 0 && ARGV[0].start_with?('-')
+  option = ARGV.shift
+end
+
+raise "Usage: ./run_test.rb [option] <testname>" if ARGV.length != 1
 
 testname = ARGV[0]
 
 # Run build.rb to compile/assemble/link the test program
-rc = system("./build.rb #{testname}")
+rc = system("./build.rb #{option} #{testname}")
 if !rc
   STDERR.puts "build.rb failed"
   exit 1
