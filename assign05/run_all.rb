@@ -1,5 +1,12 @@
 #! /usr/bin/env ruby
 
+option = ''
+if ARGV.length > 0 && ARGV[0].start_with?('-')
+  option = ARGV.shift
+end
+
+raise "Usage: ./run_all.rb [option]" if ARGV.length != 0
+
 testcases = []
 
 IO.popen("ls input/*.c") do |f|
@@ -17,7 +24,7 @@ testcases.each do |testname|
   #puts testname
   print "#{testname}..."
   STDOUT.flush
-  rc = system("./run_test.rb #{testname} > /dev/null 2> /dev/null")
+  rc = system("./run_test.rb #{option} #{testname} > /dev/null 2> /dev/null")
   if rc
     puts "passed!"
     num_passed += 1
