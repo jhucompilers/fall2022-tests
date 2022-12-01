@@ -15,11 +15,11 @@ main:
 	movl     $0, -32(%rbp)       /* mov_l    vr13, $0 */
 	movl     -32(%rbp), %r10d    /* mov_l    vr12, vr13 */
 	movl     %r10d, -40(%rbp)
-	movl     $11, -32(%rbp)      /* mov_l    vr13, $11 */
-	movl     -32(%rbp), %r10d    /* mov_l    vr11, vr13 */
+	movl     $11, -24(%rbp)      /* mov_l    vr14, $11 */
+	movl     -24(%rbp), %r10d    /* mov_l    vr11, vr14 */
 	movl     %r10d, -48(%rbp)
-	movl     $0, -24(%rbp)       /* mov_l    vr14, $0 */
-	movl     -24(%rbp), %r10d    /* mov_l    vr10, vr14 */
+	movl     $0, -16(%rbp)       /* mov_l    vr15, $0 */
+	movl     -16(%rbp), %r10d    /* mov_l    vr10, vr15 */
 	movl     %r10d, -56(%rbp)
 	jmp      .L1                 /* jmp      .L1 */
 .L0:
@@ -43,6 +43,7 @@ main:
 	cmpl     $0, -8(%rbp)        /* cjmp_t   vr16, .L0 */
 	jne      .L0
 	movl     -40(%rbp), %eax     /* mov_l    vr0, vr12 */
+	jmp      .Lmain_return       /* jmp      .Lmain_return */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */
 .Lmain_return:
 	addq     $64, %rsp           /* leave    $0 */

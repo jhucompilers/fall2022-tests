@@ -19,6 +19,7 @@ main:
 	movl     %r10d, -32(%rbp)
 	movl     -32(%rbp), %eax     /* mov_l    vr0, vr10 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */
+	jmp      .Lmain_return       /* jmp      .Lmain_return */
 .Lmain_return:
 	addq     $32, %rsp           /* leave    $0 */
 	popq     %rbp
