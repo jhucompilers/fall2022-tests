@@ -6,6 +6,7 @@
 /* Function 'main' uses 0 total bytes of memory storage for vregs */
 /* Function 'main': placing vreg storage at offset -8 from %rbp */
 /* Function 'main': 16 bytes of local storage allocated in stack frame */
+/* performed 3 round(s) of peephole optimization */
 	.section .text
 
 	.globl main
@@ -15,8 +16,7 @@ main:
 	subq     $16, %rsp
 	pushq    %rbx
 	subq     $8, %rsp
-	leaq     -8(%rbp), %r10      /* localaddr vr11<%r9>, $0 */
-	movq     %r10, %r9
+	leaq     -8(%rbp), %r9       /* localaddr vr11<%r9>, $0 */
 	movq     %r9, %r8            /* add_q    vr14<%r8>, vr11<%r9>, $0 */
 	addq     $0, %r8
 	movl     $2, (%r8)           /* mov_l    (vr14<%r8d>), $2 */

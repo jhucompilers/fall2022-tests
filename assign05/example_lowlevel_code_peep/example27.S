@@ -10,6 +10,7 @@
 /* Function 'main' uses 24 total bytes of memory storage for vregs */
 /* Function 'main': placing vreg storage at offset -424 from %rbp */
 /* Function 'main': 432 bytes of local storage allocated in stack frame */
+/* performed 4 round(s) of peephole optimization */
 	.section .text
 
 	.globl main
@@ -21,45 +22,39 @@ main:
 	pushq    %rbx
 	pushq    %r13
 	subq     $8, %rsp
-	movl     $0, %r12d           /* mov_l    vr10, $0 */
+	xorl     %r12d, %r12d        /* mov_l    vr10, $0 */
 	jmp      .L1                 /* jmp      .L1 */
 .L0:
-	movl     $0, %r13d           /* mov_l    vr12, $0 */
-	movl     $0, %ebx            /* mov_l    vr11, $0 */
+	xorl     %r13d, %r13d        /* mov_l    vr12, $0 */
+	xorl     %ebx, %ebx          /* mov_l    vr11, $0 */
 	jmp      .L3                 /* jmp      .L3 */
 .L2:
-	leaq     -400(%rbp), %r10    /* localaddr vr13<%r9>, $0 */
-	movq     %r10, %r9
+	leaq     -400(%rbp), %r9     /* localaddr vr13<%r9>, $0 */
 	movslq   %r12d, %r8          /* sconv_lq vr14<%r8>, vr10 */
 	movq     %r8, %rcx           /* mul_q    vr15<%rcx>, vr14<%r8>, $40 */
 	imulq    $40, %rcx
 	movq     %r9, %rdx           /* add_q    vr16<%rdx>, vr13<%r9>, vr15<%rcx> */
 	addq     %rcx, %rdx
 	movslq   %ebx, %rsi          /* sconv_lq vr17<%rsi>, vr11 */
-	movq     %rsi, %r8           /* mul_q    vr18<%r8>, vr17<%rsi>, $4 */
-	imulq    $4, %r8
-	movq     %rdx, %r9           /* add_q    vr19<%r9>, vr16<%rdx>, vr18<%r8> */
-	addq     %r8, %r9
-	movl     %r13d, (%r9)        /* mov_l    (vr19<%r9d>), vr12 */
+	movl     %r13d, (%rdx,%rsi,4) /* mul_q    vr18<%r8>, vr17<%rsi>, $4 */
 	addl     %r12d, %r13d
-	addl     $1, %ebx
+	incl     %ebx
 .L3:
 	movl     %ebx, %r10d         /* cmplte_l vr24<%r9d>, vr11, $9 */
 	cmpl     $9, %r10d           /* cjmp_t   vr24<%r9d>, .L2 */
 	jle      .L2
-	addl     $1, %r12d
+	incl     %r12d
 .L1:
 	movl     %r12d, %r10d        /* cmplte_l vr28<%r9d>, vr10, $9 */
 	cmpl     $9, %r10d           /* cjmp_t   vr28<%r9d>, .L0 */
 	jle      .L0
-	movl     $0, %r12d           /* mov_l    vr10, $0 */
+	xorl     %r12d, %r12d        /* mov_l    vr10, $0 */
 	jmp      .L5                 /* jmp      .L5 */
 .L4:
-	movl     $0, %ebx            /* mov_l    vr11, $0 */
+	xorl     %ebx, %ebx          /* mov_l    vr11, $0 */
 	jmp      .L7                 /* jmp      .L7 */
 .L6:
-	leaq     -400(%rbp), %r10    /* localaddr vr13<%r9>, $0 */
-	movq     %r10, %r9
+	leaq     -400(%rbp), %r9     /* localaddr vr13<%r9>, $0 */
 	movslq   %r12d, %r8          /* sconv_lq vr14<%r8>, vr10 */
 	movq     %r8, %rcx           /* mul_q    vr15<%rcx>, vr14<%r8>, $40 */
 	imulq    $40, %rcx
@@ -69,18 +64,18 @@ main:
 	movl     (%rdx,%rsi,4), %edi /* mul_q    vr18<%r8>, vr17<%rsi>, $4 */
 	call     print_i32           /* call     print_i32 */
 	call     print_space         /* call     print_space */
-	addl     $1, %ebx
+	incl     %ebx
 .L7:
 	movl     %ebx, %r10d         /* cmplte_l vr23<%r9d>, vr11, $9 */
 	cmpl     $9, %r10d           /* cjmp_t   vr23<%r9d>, .L6 */
 	jle      .L6
 	call     print_nl            /* call     print_nl */
-	addl     $1, %r12d
+	incl     %r12d
 .L5:
 	movl     %r12d, %r10d        /* cmplte_l vr27<%r9d>, vr10, $9 */
 	cmpl     $9, %r10d           /* cjmp_t   vr27<%r9d>, .L4 */
 	jle      .L4
-	movl     $0, %eax            /* mov_l    vr0, $0 */
+	xorl     %eax, %eax          /* mov_l    vr0, $0 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */
 .Lmain_return:
 	addq     $8, %rsp            /* leave    $400 */

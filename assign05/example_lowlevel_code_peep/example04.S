@@ -8,6 +8,7 @@
 /* Function 'main' uses 24 total bytes of memory storage for vregs */
 /* Function 'main': placing vreg storage at offset -24 from %rbp */
 /* Function 'main': 32 bytes of local storage allocated in stack frame */
+/* performed 4 round(s) of peephole optimization */
 	.section .text
 
 	.globl main
@@ -19,13 +20,13 @@ main:
 	pushq    %r13
 	pushq    %r12
 	subq     $8, %rsp
-	movl     $0, %r12d           /* mov_l    vr12, $0 */
+	xorl     %r12d, %r12d        /* mov_l    vr12, $0 */
 	movl     $11, %r13d          /* mov_l    vr11, $11 */
-	movl     $0, %ebx            /* mov_l    vr10, $0 */
+	xorl     %ebx, %ebx          /* mov_l    vr10, $0 */
 	jmp      .L1                 /* jmp      .L1 */
 .L0:
 	addl     %ebx, %r12d
-	addl     $1, %ebx
+	incl     %ebx
 .L1:
 	movl     %ebx, %r10d         /* cmplte_l vr16<%r9d>, vr10, vr11 */
 	cmpl     %r13d, %r10d        /* cjmp_t   vr16<%r9d>, .L0 */

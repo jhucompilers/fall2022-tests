@@ -6,6 +6,7 @@
 /* Function 'main' uses 0 total bytes of memory storage for vregs */
 /* Function 'main': placing vreg storage at offset -24 from %rbp */
 /* Function 'main': 32 bytes of local storage allocated in stack frame */
+/* performed 3 round(s) of peephole optimization */
 	.section .text
 
 	.globl main
@@ -15,8 +16,7 @@ main:
 	subq     $32, %rsp
 	pushq    %rbx
 	subq     $8, %rsp
-	leaq     -24(%rbp), %r10     /* localaddr vr12<%r9>, $0 */
-	movq     %r10, %r9
+	leaq     -24(%rbp), %r9      /* localaddr vr12<%r9>, $0 */
 	movq     %r9, %r8            /* add_q    vr14<%r8>, vr12<%r9>, $0 */
 	addq     $0, %r8
 	movq     %r8, %rcx           /* add_q    vr18<%rcx>, vr14<%r8>, $0 */
@@ -37,21 +37,16 @@ main:
 	movq     %r8, %rsi           /* add_q    vr58<%rsi>, vr14<%r8>, $5 */
 	addq     $5, %rsi
 	movb     $0, (%rsi)          /* mov_b    (vr58<%sil>), $0 */
-	movq     %r9, %r10           /* add_q    vr62<%rcx>, vr12<%r9>, $20 */
-	addq     $20, %r10
-	movq     %r10, %rcx
-	movl     $43, (%rcx)         /* mov_l    (vr62<%ecx>), $43 */
+	movl     $43, 20(%r9)        /* add_q    vr62<%rcx>, vr12<%r9>, $20 */
 	movq     %r8, %rdi           /* mov_q    vr1, vr14<%r8> */
 	call     print_str           /* call     print_str */
 	call     print_nl            /* call     print_nl */
-	leaq     -24(%rbp), %r10     /* localaddr vr66<%r9>, $0 */
-	movq     %r10, %r9
-	movq     %r9, %r8            /* add_q    vr68<%r8>, vr66<%r9>, $20 */
+	leaq     -24(%rbp), %r8      /* localaddr vr66<%r9>, $0 */
 	addq     $20, %r8
 	movl     (%r8), %edi         /* mov_l    vr1, (vr68<%r8d>) */
 	call     print_i32           /* call     print_i32 */
 	call     print_nl            /* call     print_nl */
-	movl     $0, %eax            /* mov_l    vr0, $0 */
+	xorl     %eax, %eax          /* mov_l    vr0, $0 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */
 .Lmain_return:
 	addq     $8, %rsp            /* leave    $24 */

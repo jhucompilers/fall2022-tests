@@ -13,6 +13,7 @@
 /* Function 'sum' uses 32 total bytes of memory storage for vregs */
 /* Function 'sum': placing vreg storage at offset -32 from %rbp */
 /* Function 'sum': 32 bytes of local storage allocated in stack frame */
+/* performed 4 round(s) of peephole optimization */
 	.section .text
 
 	.globl sum
@@ -26,14 +27,14 @@ sum:
 	pushq    %r12
 	movq     %rdi, %r13          /* mov_q    vr10, vr1 */
 	movl     %esi, %r14d         /* mov_l    vr11, vr2 */
-	movl     $0, %r12d           /* mov_l    vr13, $0 */
-	movl     $0, %ebx            /* mov_l    vr12, $0 */
+	xorl     %r12d, %r12d        /* mov_l    vr13, $0 */
+	xorl     %ebx, %ebx          /* mov_l    vr12, $0 */
 	jmp      .L1                 /* jmp      .L1 */
 .L0:
 	movslq   %ebx, %r9           /* sconv_lq vr14<%r9>, vr12 */
 	movl     (%r13,%r9,4), %edx  /* mul_q    vr15<%r8>, vr14<%r9>, $4 */
 	addl     %edx, %r12d
-	addl     $1, %ebx
+	incl     %ebx
 .L1:
 	movl     %ebx, %r10d         /* cmplt_l  vr21<%r9d>, vr12, vr11 */
 	cmpl     %r14d, %r10d        /* cjmp_t   vr21<%r9d>, .L0 */
@@ -53,6 +54,7 @@ sum:
 /* Function 'main' uses 0 total bytes of memory storage for vregs */
 /* Function 'main': placing vreg storage at offset -16 from %rbp */
 /* Function 'main': 16 bytes of local storage allocated in stack frame */
+/* performed 3 round(s) of peephole optimization */
 
 	.globl main
 main:
@@ -61,17 +63,10 @@ main:
 	subq     $16, %rsp
 	pushq    %rbx
 	subq     $8, %rsp
-	leaq     -16(%rbp), %r10     /* localaddr vr12<%r9>, $0 */
-	movq     %r10, %r9
-	movq     %r9, %r8            /* add_q    vr16<%r8>, vr12<%r9>, $0 */
-	addq     $0, %r8
-	movl     $1, (%r8)           /* mov_l    (vr16<%r8d>), $1 */
-	movq     %r9, %rcx           /* add_q    vr22<%rcx>, vr12<%r9>, $4 */
-	addq     $4, %rcx
-	movl     $2, (%rcx)          /* mov_l    (vr22<%ecx>), $2 */
-	movq     %r9, %rdx           /* add_q    vr28<%rdx>, vr12<%r9>, $8 */
-	addq     $8, %rdx
-	movl     $3, (%rdx)          /* mov_l    (vr28<%edx>), $3 */
+	leaq     -16(%rbp), %r9      /* localaddr vr12<%r9>, $0 */
+	movl     $1, 0(%r9)          /* add_q    vr16<%r8>, vr12<%r9>, $0 */
+	movl     $2, 4(%r9)          /* add_q    vr22<%rcx>, vr12<%r9>, $4 */
+	movl     $3, 8(%r9)          /* add_q    vr28<%rdx>, vr12<%r9>, $8 */
 	movq     %r9, %rdi           /* mov_q    vr1, vr12<%r9> */
 	movl     $3, %esi            /* mov_l    vr2, $3 */
 	call     sum                 /* call     sum */

@@ -16,6 +16,7 @@
 /* Function 'read_m10x10' uses 16 total bytes of memory storage for vregs */
 /* Function 'read_m10x10': placing vreg storage at offset -16 from %rbp */
 /* Function 'read_m10x10': 16 bytes of local storage allocated in stack frame */
+/* performed 4 round(s) of peephole optimization */
 	.section .text
 
 	.globl read_m10x10
@@ -26,13 +27,13 @@ read_m10x10:
 	pushq    %r12
 	pushq    %rbx
 	movq     %rdi, %r12          /* mov_q    vr10, vr1 */
-	movl     $0, %ebx            /* mov_l    vr11, $0 */
+	xorl     %ebx, %ebx          /* mov_l    vr11, $0 */
 	jmp      .L1                 /* jmp      .L1 */
 .L0:
 	call     read_i64            /* call     read_i64 */
 	movslq   %ebx, %r9           /* sconv_lq vr13<%r9>, vr11 */
 	movq     %rax, (%r12,%r9,8)  /* mul_q    vr14<%r8>, vr13<%r9>, $8 */
-	addl     $1, %ebx
+	incl     %ebx
 .L1:
 	movl     %ebx, %r10d         /* cmplt_l  vr19<%r9d>, vr11, $100 */
 	cmpl     $100, %r10d         /* cjmp_t   vr19<%r9d>, .L0 */
@@ -54,6 +55,7 @@ read_m10x10:
 /* Function 'main': placing vreg storage at offset -2440 from %rbp */
 /* Function 'main': allocating space for 1 register spills at offset -2448 from %rbp */
 /* Function 'main': 2448 bytes of local storage allocated in stack frame */
+/* performed 4 round(s) of peephole optimization */
 
 	.globl main
 main:
@@ -67,58 +69,47 @@ main:
 	pushq    %r12
 	subq     $8, %rsp
 	movl     $10, %r14d          /* mov_l    vr10, $10 */
-	leaq     -2400(%rbp), %r10   /* localaddr vr17<%r9>, $0 */
-	movq     %r10, %r9
-	movq     %r9, %r10           /* add_q    vr21<%r8>, vr17<%r9>, $0 */
-	addq     $0, %r10
-	addq     $0, %r10
-	movq     %r10, %rcx
-	movq     %rcx, %rdi          /* mov_q    vr1, vr25<%rcx> */
+	leaq     -2400(%rbp), %r8    /* localaddr vr17<%r9>, $0 */
+	addq     $0, %r8
+	movq     %r8, %rdi           /* add_q    vr25<%rcx>, vr21<%r8>, $0 */
+	addq     $0, %rdi
 	call     read_m10x10         /* call     read_m10x10 */
-	leaq     -1600(%rbp), %r10   /* localaddr vr26<%r9>, $800 */
-	movq     %r10, %r9
-	movq     %r9, %rcx           /* add_q    vr30<%r8>, vr26<%r9>, $0 */
-	addq     $0, %rcx
-	addq     $0, %rcx
-	movq     %rcx, %rdi          /* mov_q    vr1, vr34<%rcx> */
+	leaq     -1600(%rbp), %r8    /* localaddr vr26<%r9>, $800 */
+	addq     $0, %r8
+	movq     %r8, %rdi           /* add_q    vr34<%rcx>, vr30<%r8>, $0 */
+	addq     $0, %rdi
 	call     read_m10x10         /* call     read_m10x10 */
-	movl     $0, %r13d           /* mov_l    vr11, $0 */
+	xorl     %r13d, %r13d        /* mov_l    vr11, $0 */
 	jmp      .L3                 /* jmp      .L3 */
 .L2:
-	movl     $0, %ebx            /* mov_l    vr12, $0 */
+	xorl     %ebx, %ebx          /* mov_l    vr12, $0 */
 	jmp      .L5                 /* jmp      .L5 */
 .L4:
-	leaq     -800(%rbp), %r10    /* localaddr vr17<%r9>, $1600 */
-	movq     %r10, %r9
+	leaq     -800(%rbp), %r9     /* localaddr vr17<%r9>, $1600 */
 	movslq   %r13d, %r8          /* sconv_lq vr18<%r8>, vr11 */
 	movq     %r8, %rcx           /* mul_q    vr19<%rcx>, vr18<%r8>, $80 */
 	imulq    $80, %rcx
 	movq     %r9, %rdx           /* add_q    vr20<%rdx>, vr17<%r9>, vr19<%rcx> */
 	addq     %rcx, %rdx
 	movslq   %ebx, %rsi          /* sconv_lq vr21<%rsi>, vr12 */
-	movq     %rsi, %r8           /* mul_q    vr22<%r8>, vr21<%rsi>, $8 */
-	imulq    $8, %r8
-	movq     %rdx, %r9           /* add_q    vr23<%r9>, vr20<%rdx>, vr22<%r8> */
-	addq     %r8, %r9
-	movq     $0, (%r9)           /* mov_q    (vr23<%r9>), $0 */
-	addl     $1, %ebx
+	movq     $0, (%rdx,%rsi,8)   /* mul_q    vr22<%r8>, vr21<%rsi>, $8 */
+	incl     %ebx
 .L5:
 	movl     %ebx, %r10d         /* cmplt_l  vr26<%r9d>, vr12, vr10 */
 	cmpl     %r14d, %r10d        /* cjmp_t   vr26<%r9d>, .L4 */
 	jl       .L4
-	addl     $1, %r13d
+	incl     %r13d
 .L3:
 	movl     %r13d, %r10d        /* cmplt_l  vr29<%r9d>, vr11, vr10 */
 	cmpl     %r14d, %r10d        /* cjmp_t   vr29<%r9d>, .L2 */
 	jl       .L2
-	movl     $0, %r15d           /* mov_l    vr13, $0 */
+	xorl     %r15d, %r15d        /* mov_l    vr13, $0 */
 	jmp      .L7                 /* jmp      .L7 */
 .L6:
-	movl     $0, %r13d           /* mov_l    vr11, $0 */
+	xorl     %r13d, %r13d        /* mov_l    vr11, $0 */
 	jmp      .L9                 /* jmp      .L9 */
 .L8:
-	leaq     -2400(%rbp), %r10   /* localaddr vr16<%r9>, $0 */
-	movq     %r10, %r9
+	leaq     -2400(%rbp), %r9    /* localaddr vr16<%r9>, $0 */
 	movslq   %r13d, %r8          /* sconv_lq vr17<%r8>, vr11 */
 	movq     %r8, %rcx           /* mul_q    vr18<%rcx>, vr17<%r8>, $80 */
 	imulq    $80, %rcx
@@ -127,11 +118,10 @@ main:
 	movslq   %r15d, %rsi         /* sconv_lq vr20<%rsi>, vr13 */
 	movq     (%rdx,%rsi,8), %rcx /* mul_q    vr21<%r8>, vr20<%rsi>, $8 */
 	movq     %rcx, -2408(%rbp)   /* mov_q    vr14, vr23<%rcx> */
-	movl     $0, %ebx            /* mov_l    vr12, $0 */
+	xorl     %ebx, %ebx          /* mov_l    vr12, $0 */
 	jmp      .L11                /* jmp      .L11 */
 .L10:
-	leaq     -800(%rbp), %r10    /* localaddr vr16<%r9>, $1600 */
-	movq     %r10, %r9
+	leaq     -800(%rbp), %r9     /* localaddr vr16<%r9>, $1600 */
 	movslq   %r13d, %r8          /* sconv_lq vr17<%r8>, vr11 */
 	movq     %r8, %rcx           /* mul_q    vr18<%rcx>, vr17<%r8>, $80 */
 	imulq    $80, %rcx
@@ -140,12 +130,10 @@ main:
 	movslq   %ebx, %rsi          /* sconv_lq vr20<%rsi>, vr12 */
 	movq     %rsi, %r8           /* mul_q    vr21<%r8>, vr20<%rsi>, $8 */
 	imulq    $8, %r8
-	movq     %rdx, %r10          /* add_q    vr22<%r9>, vr19<%rdx>, vr21<%r8> */
-	addq     %r8, %r10
-	movq     %r10, %r9
+	movq     %rdx, %r9           /* add_q    vr22<%r9>, vr19<%rdx>, vr21<%r8> */
+	addq     %r8, %r9
 	movq     (%r9), %rcx         /* mov_q    vr23<%rcx>, (vr22<%r9>) */
-	leaq     -1600(%rbp), %r10   /* localaddr vr24<%rsi>, $800 */
-	movq     %r10, %rsi
+	leaq     -1600(%rbp), %rsi   /* localaddr vr24<%rsi>, $800 */
 	movslq   %r15d, %rdx         /* sconv_lq vr25<%rdx>, vr13 */
 	movq     %r9, -2448(%rbp)    /* spill_q  vr22<%r9>, $0 */
 	movq     %rdx, %r9           /* mul_q    vr26<%r9>, vr25<%rdx>, $80 */
@@ -160,29 +148,28 @@ main:
 	addq     %r8, %rdx
 	movq     -2448(%rbp), %rsi   /* restore_q vr22<%rsi>, $0 */
 	movq     %rdx, (%rsi)        /* mov_q    (vr22<%rsi>), vr33<%rdx> */
-	addl     $1, %ebx
+	incl     %ebx
 .L11:
 	movl     %ebx, %r10d         /* cmplt_l  vr43<%r9d>, vr12, vr10 */
 	cmpl     %r14d, %r10d        /* cjmp_t   vr43<%r9d>, .L10 */
 	jl       .L10
-	addl     $1, %r13d
+	incl     %r13d
 .L9:
 	movl     %r13d, %r10d        /* cmplt_l  vr46<%r9d>, vr11, vr10 */
 	cmpl     %r14d, %r10d        /* cjmp_t   vr46<%r9d>, .L8 */
 	jl       .L8
-	addl     $1, %r15d
+	incl     %r15d
 .L7:
 	movl     %r15d, %r10d        /* cmplt_l  vr49<%r9d>, vr13, vr10 */
 	cmpl     %r14d, %r10d        /* cjmp_t   vr49<%r9d>, .L6 */
 	jl       .L6
-	movl     $0, %r13d           /* mov_l    vr11, $0 */
+	xorl     %r13d, %r13d        /* mov_l    vr11, $0 */
 	jmp      .L13                /* jmp      .L13 */
 .L12:
-	movl     $0, %ebx            /* mov_l    vr12, $0 */
+	xorl     %ebx, %ebx          /* mov_l    vr12, $0 */
 	jmp      .L15                /* jmp      .L15 */
 .L14:
-	leaq     -800(%rbp), %r10    /* localaddr vr16<%r9>, $1600 */
-	movq     %r10, %r9
+	leaq     -800(%rbp), %r9     /* localaddr vr16<%r9>, $1600 */
 	movslq   %r13d, %r8          /* sconv_lq vr17<%r8>, vr11 */
 	movq     %r8, %rcx           /* mul_q    vr18<%rcx>, vr17<%r8>, $80 */
 	imulq    $80, %rcx
@@ -192,17 +179,17 @@ main:
 	movq     (%rdx,%rsi,8), %rdi /* mul_q    vr21<%r8>, vr20<%rsi>, $8 */
 	call     print_i64           /* call     print_i64 */
 	call     print_nl            /* call     print_nl */
-	addl     $1, %ebx
+	incl     %ebx
 .L15:
 	movl     %ebx, %r10d         /* cmplt_l  vr25<%r9d>, vr12, vr10 */
 	cmpl     %r14d, %r10d        /* cjmp_t   vr25<%r9d>, .L14 */
 	jl       .L14
-	addl     $1, %r13d
+	incl     %r13d
 .L13:
 	movl     %r13d, %r10d        /* cmplt_l  vr28<%r9d>, vr11, vr10 */
 	cmpl     %r14d, %r10d        /* cjmp_t   vr28<%r9d>, .L12 */
 	jl       .L12
-	movl     $0, %eax            /* mov_l    vr0, $0 */
+	xorl     %eax, %eax          /* mov_l    vr0, $0 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */
 .Lmain_return:
 	addq     $8, %rsp            /* leave    $2400 */

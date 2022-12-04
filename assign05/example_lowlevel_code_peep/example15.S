@@ -6,6 +6,7 @@
 /* Function 'main' uses 8 total bytes of memory storage for vregs */
 /* Function 'main': placing vreg storage at offset -8 from %rbp */
 /* Function 'main': 16 bytes of local storage allocated in stack frame */
+/* performed 3 round(s) of peephole optimization */
 	.section .text
 
 	.globl main

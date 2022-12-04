@@ -12,6 +12,7 @@
 /* Function 'sum' uses 0 total bytes of memory storage for vregs */
 /* Function 'sum': placing vreg storage at offset 0 from %rbp */
 /* Function 'sum': 0 bytes of local storage allocated in stack frame */
+/* performed 3 round(s) of peephole optimization */
 	.section .text
 
 	.globl sum
@@ -38,6 +39,7 @@ sum:
 /* Function 'main' uses 0 total bytes of memory storage for vregs */
 /* Function 'main': placing vreg storage at offset 0 from %rbp */
 /* Function 'main': 0 bytes of local storage allocated in stack frame */
+/* performed 1 round(s) of peephole optimization */
 
 	.globl main
 main:
