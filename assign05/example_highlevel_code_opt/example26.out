@@ -7,23 +7,23 @@
 	.globl main
 main:
 	enter    $24
-	localaddr vr11<%r9>, $0
-	add_q    vr13<%r8>, vr11<%r9>, $0
-	add_q    vr17<%rcx>, vr13<%r8>, $0
-	mov_b    (vr17<%cl>), $65
-	add_q    vr25<%rdx>, vr13<%r8>, $1
-	mov_b    (vr25<%dl>), $108
-	add_q    vr33<%rsi>, vr13<%r8>, $2
-	mov_b    (vr33<%sil>), $105
-	add_q    vr41<%rcx>, vr13<%r8>, $3
-	mov_b    (vr41<%cl>), $99
-	add_q    vr49<%rdx>, vr13<%r8>, $4
-	mov_b    (vr49<%dl>), $101
-	add_q    vr57<%rsi>, vr13<%r8>, $5
-	mov_b    (vr57<%sil>), $0
-	add_q    vr61<%rcx>, vr11<%r9>, $20
-	mov_l    (vr61<%ecx>), $43
-	mov_q    vr1, vr13<%r8>
+	localaddr vr12<%r9>, $0
+	add_q    vr14<%r8>, vr12<%r9>, $0
+	add_q    vr18<%rcx>, vr14<%r8>, $0
+	mov_b    (vr18<%cl>), $65
+	add_q    vr26<%rdx>, vr14<%r8>, $1
+	mov_b    (vr26<%dl>), $108
+	add_q    vr34<%rsi>, vr14<%r8>, $2
+	mov_b    (vr34<%sil>), $105
+	add_q    vr42<%rcx>, vr14<%r8>, $3
+	mov_b    (vr42<%cl>), $99
+	add_q    vr50<%rdx>, vr14<%r8>, $4
+	mov_b    (vr50<%dl>), $101
+	add_q    vr58<%rsi>, vr14<%r8>, $5
+	mov_b    (vr58<%sil>), $0
+	add_q    vr62<%rcx>, vr12<%r9>, $20
+	mov_l    (vr62<%ecx>), $43
+	mov_q    vr1, vr14<%r8>
 	call     print_str
 	call     print_nl
 	localaddr vr66<%r9>, $0

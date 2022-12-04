@@ -79,21 +79,21 @@ main:
 	subq     $16, %rsp
 	pushq    %rbx
 	subq     $8, %rsp
-	leaq     -16(%rbp), %r10     /* localaddr vr11<%r9>, $0 */
+	leaq     -16(%rbp), %r10     /* localaddr vr12<%r9>, $0 */
 	movq     %r10, %r9
-	movq     %r9, %r10           /* add_q    vr15<%r8>, vr11<%r9>, $0 */
+	movq     %r9, %r10           /* add_q    vr16<%r8>, vr12<%r9>, $0 */
 	addq     $0, %r10
 	movq     %r10, %r8
-	movl     $1, (%r8)           /* mov_l    (vr15<%r8d>), $1 */
-	movq     %r9, %r10           /* add_q    vr21<%rcx>, vr11<%r9>, $4 */
+	movl     $1, (%r8)           /* mov_l    (vr16<%r8d>), $1 */
+	movq     %r9, %r10           /* add_q    vr22<%rcx>, vr12<%r9>, $4 */
 	addq     $4, %r10
 	movq     %r10, %rcx
-	movl     $2, (%rcx)          /* mov_l    (vr21<%ecx>), $2 */
-	movq     %r9, %r10           /* add_q    vr27<%rdx>, vr11<%r9>, $8 */
+	movl     $2, (%rcx)          /* mov_l    (vr22<%ecx>), $2 */
+	movq     %r9, %r10           /* add_q    vr28<%rdx>, vr12<%r9>, $8 */
 	addq     $8, %r10
 	movq     %r10, %rdx
-	movl     $3, (%rdx)          /* mov_l    (vr27<%edx>), $3 */
-	movq     %r9, %rdi           /* mov_q    vr1, vr11<%r9> */
+	movl     $3, (%rdx)          /* mov_l    (vr28<%edx>), $3 */
+	movq     %r9, %rdi           /* mov_q    vr1, vr12<%r9> */
 	movl     $3, %esi            /* mov_l    vr2, $3 */
 	call     sum                 /* call     sum */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */

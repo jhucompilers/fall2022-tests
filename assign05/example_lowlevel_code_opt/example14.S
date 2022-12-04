@@ -15,13 +15,13 @@ main:
 	subq     $16, %rsp
 	pushq    %rbx
 	subq     $8, %rsp
-	leaq     -8(%rbp), %r10      /* localaddr vr11<%r9>, $0 */
+	leaq     -8(%rbp), %r10      /* localaddr vr12<%r9>, $0 */
 	movq     %r10, %r9
-	movq     %r9, %r10           /* add_q    vr15<%r8>, vr11<%r9>, $0 */
+	movq     %r9, %r10           /* add_q    vr16<%r8>, vr12<%r9>, $0 */
 	addq     $0, %r10
 	movq     %r10, %r8
-	movl     $2, (%r8)           /* mov_l    (vr15<%r8d>), $2 */
-	movl     (%r8), %ecx         /* mov_l    vr24<%ecx>, (vr15<%r8d>) */
+	movl     $2, (%r8)           /* mov_l    (vr16<%r8d>), $2 */
+	movl     (%r8), %ecx         /* mov_l    vr24<%ecx>, (vr16<%r8d>) */
 	movl     %ecx, %r10d         /* add_l    vr23<%edx>, vr24<%ecx>, $1 */
 	addl     $1, %r10d
 	movl     %r10d, %edx

@@ -8,12 +8,12 @@
 	.globl main
 main:
 	enter    $16
-	localaddr vr11<%r9>, $8
-	localaddr vr12<%r8>, $0
-	mov_q    (vr11<%r9>), vr12<%r8>
-	mov_q    vr14<%rcx>, (vr11<%r9>)
-	mov_l    (vr14<%ecx>), $17
-	mov_l    vr0, (vr12<%r8d>)
+	localaddr vr11<%r9>, $0
+	localaddr vr12<%r8>, $8
+	mov_q    (vr12<%r8>), vr11<%r9>
+	mov_q    vr15<%rcx>, (vr12<%r8>)
+	mov_l    (vr15<%ecx>), $17
+	mov_l    vr0, (vr11<%r9d>)
 	jmp      .Lmain_return
 .Lmain_return:
 	leave    $16

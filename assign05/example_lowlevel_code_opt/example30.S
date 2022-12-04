@@ -13,38 +13,37 @@
 /* Function 'main' uses 2400 bytes of memory and 16 virtual registers */
 /* allocate machine register %rbx to variable 'i' (vr11), rank is 81 */
 /* allocate machine register %r12 to variable 'arr' (vr10), rank is 20 */
-/* Function 'read_m10x10' uses 24 total bytes of memory storage for vregs */
-/* Function 'read_m10x10': placing vreg storage at offset -24 from %rbp */
-/* Function 'read_m10x10': 32 bytes of local storage allocated in stack frame */
+/* Function 'read_m10x10' uses 16 total bytes of memory storage for vregs */
+/* Function 'read_m10x10': placing vreg storage at offset -16 from %rbp */
+/* Function 'read_m10x10': 16 bytes of local storage allocated in stack frame */
 	.section .text
 
 	.globl read_m10x10
 read_m10x10:
 	pushq    %rbp                /* enter    $0 */
 	movq     %rsp, %rbp
-	subq     $32, %rsp
+	subq     $16, %rsp
 	pushq    %r12
 	pushq    %rbx
 	movq     %rdi, %r12          /* mov_q    vr10, vr1 */
 	movl     $0, %ebx            /* mov_l    vr11, $0 */
 	jmp      .L1                 /* jmp      .L1 */
 .L0:
-	movl     %ebx, %r10d         /* sconv_lq vr12<%r9>, vr11 */
+	call     read_i64            /* call     read_i64 */
+	movl     %ebx, %r10d         /* sconv_lq vr13<%r9>, vr11 */
 	movslq   %r10d, %r10
 	movq     %r10, %r9
-	movq     %r9, %r10           /* mul_q    vr13<%r8>, vr12<%r9>, $8 */
+	movq     %r9, %r10           /* mul_q    vr14<%r8>, vr13<%r9>, $8 */
 	imulq    $8, %r10
 	movq     %r10, %r8
-	movq     %r12, %r10          /* add_q    vr14, vr10, vr13<%r8> */
+	movq     %r12, %r10          /* add_q    vr15<%rcx>, vr10, vr14<%r8> */
 	addq     %r8, %r10
-	movq     %r10, -8(%rbp)
-	call     read_i64            /* call     read_i64 */
-	movq     -8(%rbp), %r11      /* mov_q    (vr14), vr0 */
-	movq     %rax, (%r11)
-	movl     %ebx, %r10d         /* add_l    vr17<%r9d>, vr11, $1 */
+	movq     %r10, %rcx
+	movq     %rax, (%rcx)        /* mov_q    (vr15<%rcx>), vr0 */
+	movl     %ebx, %r10d         /* add_l    vr17<%edx>, vr11, $1 */
 	addl     $1, %r10d
-	movl     %r10d, %r9d
-	movl     %r9d, %ebx          /* mov_l    vr11, vr17<%r9d> */
+	movl     %r10d, %edx
+	movl     %edx, %ebx          /* mov_l    vr11, vr17<%edx> */
 .L1:
 	movl     %ebx, %r10d         /* cmplt_l  vr19<%r9d>, vr11, $100 */
 	cmpl     $100, %r10d
@@ -57,7 +56,7 @@ read_m10x10:
 .Lread_m10x10_return:
 	popq     %rbx                /* leave    $0 */
 	popq     %r12
-	addq     $32, %rsp
+	addq     $16, %rsp
 	popq     %rbp
 	ret                          /* ret       */
 /* allocate machine register %rbx to variable 'j' (vr12), rank is 51640 */
@@ -109,27 +108,27 @@ main:
 	movl     $0, %ebx            /* mov_l    vr12, $0 */
 	jmp      .L5                 /* jmp      .L5 */
 .L4:
-	leaq     -800(%rbp), %r10    /* localaddr vr16<%r9>, $1600 */
+	leaq     -800(%rbp), %r10    /* localaddr vr17<%r9>, $1600 */
 	movq     %r10, %r9
-	movl     %r13d, %r10d        /* sconv_lq vr17<%r8>, vr11 */
+	movl     %r13d, %r10d        /* sconv_lq vr18<%r8>, vr11 */
 	movslq   %r10d, %r10
 	movq     %r10, %r8
-	movq     %r8, %r10           /* mul_q    vr18<%rcx>, vr17<%r8>, $80 */
+	movq     %r8, %r10           /* mul_q    vr19<%rcx>, vr18<%r8>, $80 */
 	imulq    $80, %r10
 	movq     %r10, %rcx
-	movq     %r9, %r10           /* add_q    vr19<%rdx>, vr16<%r9>, vr18<%rcx> */
+	movq     %r9, %r10           /* add_q    vr20<%rdx>, vr17<%r9>, vr19<%rcx> */
 	addq     %rcx, %r10
 	movq     %r10, %rdx
-	movl     %ebx, %r10d         /* sconv_lq vr20<%rsi>, vr12 */
+	movl     %ebx, %r10d         /* sconv_lq vr21<%rsi>, vr12 */
 	movslq   %r10d, %r10
 	movq     %r10, %rsi
-	movq     %rsi, %r10          /* mul_q    vr21<%r8>, vr20<%rsi>, $8 */
+	movq     %rsi, %r10          /* mul_q    vr22<%r8>, vr21<%rsi>, $8 */
 	imulq    $8, %r10
 	movq     %r10, %r8
-	movq     %rdx, %r10          /* add_q    vr22<%r9>, vr19<%rdx>, vr21<%r8> */
+	movq     %rdx, %r10          /* add_q    vr23<%r9>, vr20<%rdx>, vr22<%r8> */
 	addq     %r8, %r10
 	movq     %r10, %r9
-	movq     $0, (%r9)           /* mov_q    (vr22<%r9>), $0 */
+	movq     $0, (%r9)           /* mov_q    (vr23<%r9>), $0 */
 	movl     %ebx, %r10d         /* add_l    vr25<%ecx>, vr12, $1 */
 	addl     $1, %r10d
 	movl     %r10d, %ecx

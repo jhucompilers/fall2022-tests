@@ -16,21 +16,21 @@ main:
 	movq     %r10, -120(%rbp)
 	movq     -120(%rbp), %r10    /* mov_q    vr10, vr11 */
 	movq     %r10, -128(%rbp)
-	movq     $0, -112(%rbp)      /* mov_q    vr12, $0 */
-	movq     -128(%rbp), %r10    /* add_q    vr13, vr10, vr12 */
-	addq     -112(%rbp), %r10
-	movq     %r10, -104(%rbp)
-	movl     $2, -96(%rbp)       /* mov_l    vr14, $2 */
-	movq     -104(%rbp), %r11    /* mov_l    (vr13), vr14 */
-	movl     -96(%rbp), %r10d
+	movl     $2, -112(%rbp)      /* mov_l    vr12, $2 */
+	movq     $0, -104(%rbp)      /* mov_q    vr13, $0 */
+	movq     -128(%rbp), %r10    /* add_q    vr14, vr10, vr13 */
+	addq     -104(%rbp), %r10
+	movq     %r10, -96(%rbp)
+	movq     -96(%rbp), %r11     /* mov_l    (vr14), vr12 */
+	movl     -112(%rbp), %r10d
 	movl     %r10d, (%r11)
-	movq     $4, -88(%rbp)       /* mov_q    vr15, $4 */
-	movq     -128(%rbp), %r10    /* add_q    vr16, vr10, vr15 */
-	addq     -88(%rbp), %r10
-	movq     %r10, -80(%rbp)
-	movl     $3, -72(%rbp)       /* mov_l    vr17, $3 */
-	movq     -80(%rbp), %r11     /* mov_l    (vr16), vr17 */
-	movl     -72(%rbp), %r10d
+	movl     $3, -88(%rbp)       /* mov_l    vr15, $3 */
+	movq     $4, -80(%rbp)       /* mov_q    vr16, $4 */
+	movq     -128(%rbp), %r10    /* add_q    vr17, vr10, vr16 */
+	addq     -80(%rbp), %r10
+	movq     %r10, -72(%rbp)
+	movq     -72(%rbp), %r11     /* mov_l    (vr17), vr15 */
+	movl     -88(%rbp), %r10d
 	movl     %r10d, (%r11)
 	movq     $0, -64(%rbp)       /* mov_q    vr18, $0 */
 	movq     -128(%rbp), %r10    /* add_q    vr19, vr10, vr18 */

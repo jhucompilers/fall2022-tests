@@ -16,14 +16,14 @@ main:
 	subq     $16, %rsp
 	pushq    %rbx
 	subq     $8, %rsp
-	leaq     -8(%rbp), %r10      /* localaddr vr11<%r9>, $8 */
+	leaq     -16(%rbp), %r10     /* localaddr vr11<%r9>, $0 */
 	movq     %r10, %r9
-	leaq     -16(%rbp), %r10     /* localaddr vr12<%r8>, $0 */
+	leaq     -8(%rbp), %r10      /* localaddr vr12<%r8>, $8 */
 	movq     %r10, %r8
-	movq     %r8, (%r9)          /* mov_q    (vr11<%r9>), vr12<%r8> */
-	movq     (%r9), %rcx         /* mov_q    vr14<%rcx>, (vr11<%r9>) */
-	movl     $17, (%rcx)         /* mov_l    (vr14<%ecx>), $17 */
-	movl     (%r8), %eax         /* mov_l    vr0, (vr12<%r8d>) */
+	movq     %r9, (%r8)          /* mov_q    (vr12<%r8>), vr11<%r9> */
+	movq     (%r8), %rcx         /* mov_q    vr15<%rcx>, (vr12<%r8>) */
+	movl     $17, (%rcx)         /* mov_l    (vr15<%ecx>), $17 */
+	movl     (%r9), %eax         /* mov_l    vr0, (vr11<%r9d>) */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */
 .Lmain_return:
 	addq     $8, %rsp            /* leave    $16 */

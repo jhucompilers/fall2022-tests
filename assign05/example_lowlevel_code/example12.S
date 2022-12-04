@@ -11,25 +11,25 @@ main:
 	pushq    %rbp                /* enter    $8 */
 	movq     %rsp, %rbp
 	subq     $144, %rsp
-	leaq     -8(%rbp), %r10      /* localaddr vr10, $0 */
-	movq     %r10, -144(%rbp)
-	movq     $0, -136(%rbp)      /* mov_q    vr11, $0 */
-	movq     -144(%rbp), %r10    /* add_q    vr12, vr10, vr11 */
-	addq     -136(%rbp), %r10
-	movq     %r10, -128(%rbp)
-	movl     $2, -120(%rbp)      /* mov_l    vr13, $2 */
-	movq     -128(%rbp), %r11    /* mov_l    (vr12), vr13 */
-	movl     -120(%rbp), %r10d
+	movl     $2, -144(%rbp)      /* mov_l    vr10, $2 */
+	leaq     -8(%rbp), %r10      /* localaddr vr11, $0 */
+	movq     %r10, -136(%rbp)
+	movq     $0, -128(%rbp)      /* mov_q    vr12, $0 */
+	movq     -136(%rbp), %r10    /* add_q    vr13, vr11, vr12 */
+	addq     -128(%rbp), %r10
+	movq     %r10, -120(%rbp)
+	movq     -120(%rbp), %r11    /* mov_l    (vr13), vr10 */
+	movl     -144(%rbp), %r10d
 	movl     %r10d, (%r11)
-	leaq     -8(%rbp), %r10      /* localaddr vr14, $0 */
-	movq     %r10, -112(%rbp)
-	movq     $4, -104(%rbp)      /* mov_q    vr15, $4 */
-	movq     -112(%rbp), %r10    /* add_q    vr16, vr14, vr15 */
-	addq     -104(%rbp), %r10
-	movq     %r10, -96(%rbp)
-	movl     $3, -88(%rbp)       /* mov_l    vr17, $3 */
-	movq     -96(%rbp), %r11     /* mov_l    (vr16), vr17 */
-	movl     -88(%rbp), %r10d
+	movl     $3, -112(%rbp)      /* mov_l    vr14, $3 */
+	leaq     -8(%rbp), %r10      /* localaddr vr15, $0 */
+	movq     %r10, -104(%rbp)
+	movq     $4, -96(%rbp)       /* mov_q    vr16, $4 */
+	movq     -104(%rbp), %r10    /* add_q    vr17, vr15, vr16 */
+	addq     -96(%rbp), %r10
+	movq     %r10, -88(%rbp)
+	movq     -88(%rbp), %r11     /* mov_l    (vr17), vr14 */
+	movl     -112(%rbp), %r10d
 	movl     %r10d, (%r11)
 	leaq     -8(%rbp), %r10      /* localaddr vr18, $0 */
 	movq     %r10, -80(%rbp)

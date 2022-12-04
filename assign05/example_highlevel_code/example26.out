@@ -6,65 +6,65 @@
 	.globl main
 main:
 	enter    $24
-	localaddr vr11, $0
-	mov_q    vr12, $0
-	add_q    vr13, vr11, vr12
-	mov_l    vr14, $0
-	sconv_lq vr15, vr14
-	mul_q    vr16, vr15, $1
-	add_q    vr17, vr13, vr16
-	mov_b    vr18, $65
-	mov_b    (vr17), vr18
-	localaddr vr19, $0
-	mov_q    vr20, $0
-	add_q    vr21, vr19, vr20
-	mov_l    vr22, $1
-	sconv_lq vr23, vr22
-	mul_q    vr24, vr23, $1
-	add_q    vr25, vr21, vr24
-	mov_b    vr26, $108
-	mov_b    (vr25), vr26
-	localaddr vr27, $0
-	mov_q    vr28, $0
-	add_q    vr29, vr27, vr28
-	mov_l    vr30, $2
-	sconv_lq vr31, vr30
-	mul_q    vr32, vr31, $1
-	add_q    vr33, vr29, vr32
-	mov_b    vr34, $105
-	mov_b    (vr33), vr34
-	localaddr vr35, $0
-	mov_q    vr36, $0
-	add_q    vr37, vr35, vr36
-	mov_l    vr38, $3
-	sconv_lq vr39, vr38
-	mul_q    vr40, vr39, $1
-	add_q    vr41, vr37, vr40
-	mov_b    vr42, $99
-	mov_b    (vr41), vr42
-	localaddr vr43, $0
-	mov_q    vr44, $0
-	add_q    vr45, vr43, vr44
-	mov_l    vr46, $4
-	sconv_lq vr47, vr46
-	mul_q    vr48, vr47, $1
-	add_q    vr49, vr45, vr48
-	mov_b    vr50, $101
-	mov_b    (vr49), vr50
-	localaddr vr51, $0
-	mov_q    vr52, $0
-	add_q    vr53, vr51, vr52
-	mov_l    vr54, $5
-	sconv_lq vr55, vr54
-	mul_q    vr56, vr55, $1
-	add_q    vr57, vr53, vr56
-	mov_l    vr58, $0
-	mov_b    (vr57), vr58
-	localaddr vr59, $0
-	mov_q    vr60, $20
-	add_q    vr61, vr59, vr60
-	mov_l    vr62, $43
-	mov_l    (vr61), vr62
+	mov_b    vr11, $65
+	localaddr vr12, $0
+	mov_q    vr13, $0
+	add_q    vr14, vr12, vr13
+	mov_l    vr15, $0
+	sconv_lq vr16, vr15
+	mul_q    vr17, vr16, $1
+	add_q    vr18, vr14, vr17
+	mov_b    (vr18), vr11
+	mov_b    vr19, $108
+	localaddr vr20, $0
+	mov_q    vr21, $0
+	add_q    vr22, vr20, vr21
+	mov_l    vr23, $1
+	sconv_lq vr24, vr23
+	mul_q    vr25, vr24, $1
+	add_q    vr26, vr22, vr25
+	mov_b    (vr26), vr19
+	mov_b    vr27, $105
+	localaddr vr28, $0
+	mov_q    vr29, $0
+	add_q    vr30, vr28, vr29
+	mov_l    vr31, $2
+	sconv_lq vr32, vr31
+	mul_q    vr33, vr32, $1
+	add_q    vr34, vr30, vr33
+	mov_b    (vr34), vr27
+	mov_b    vr35, $99
+	localaddr vr36, $0
+	mov_q    vr37, $0
+	add_q    vr38, vr36, vr37
+	mov_l    vr39, $3
+	sconv_lq vr40, vr39
+	mul_q    vr41, vr40, $1
+	add_q    vr42, vr38, vr41
+	mov_b    (vr42), vr35
+	mov_b    vr43, $101
+	localaddr vr44, $0
+	mov_q    vr45, $0
+	add_q    vr46, vr44, vr45
+	mov_l    vr47, $4
+	sconv_lq vr48, vr47
+	mul_q    vr49, vr48, $1
+	add_q    vr50, vr46, vr49
+	mov_b    (vr50), vr43
+	mov_l    vr51, $0
+	localaddr vr52, $0
+	mov_q    vr53, $0
+	add_q    vr54, vr52, vr53
+	mov_l    vr55, $5
+	sconv_lq vr56, vr55
+	mul_q    vr57, vr56, $1
+	add_q    vr58, vr54, vr57
+	mov_b    (vr58), vr51
+	mov_l    vr59, $43
+	localaddr vr60, $0
+	mov_q    vr61, $20
+	add_q    vr62, vr60, vr61
+	mov_l    (vr62), vr59
 	localaddr vr63, $0
 	mov_q    vr64, $0
 	add_q    vr65, vr63, vr64

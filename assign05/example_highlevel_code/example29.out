@@ -23,12 +23,12 @@ read_m500x500:
 	mov_l    vr11, vr12
 	jmp      .L1
 .L0:
-	sconv_lq vr12, vr11
-	mul_q    vr13, vr12, $8
-	add_q    vr14, vr10, vr13
 	call     read_i64
-	mov_q    vr15, vr0
-	mov_q    (vr14), vr15
+	mov_q    vr12, vr0
+	sconv_lq vr13, vr11
+	mul_q    vr14, vr13, $8
+	add_q    vr15, vr10, vr14
+	mov_q    (vr15), vr12
 	mov_l    vr16, $1
 	add_l    vr17, vr11, vr16
 	mov_l    vr11, vr17
@@ -58,12 +58,12 @@ main:
 	mov_l    vr13, vr22
 	jmp      .L3
 .L2:
-	localaddr vr18, $4000000
-	sconv_lq vr19, vr13
-	mul_q    vr20, vr19, $8
-	add_q    vr21, vr18, vr20
-	mov_q    vr22, $0
-	mov_q    (vr21), vr22
+	mov_q    vr18, $0
+	localaddr vr19, $4000000
+	sconv_lq vr20, vr13
+	mul_q    vr21, vr20, $8
+	add_q    vr22, vr19, vr21
+	mov_q    (vr22), vr18
 	mov_l    vr23, $1
 	add_l    vr24, vr13, vr23
 	mov_l    vr13, vr24

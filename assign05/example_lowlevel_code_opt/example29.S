@@ -15,38 +15,37 @@
 /* Function 'main' uses 6000000 bytes of memory and 18 virtual registers */
 /* allocate machine register %rbx to variable 'i' (vr11), rank is 81 */
 /* allocate machine register %r12 to variable 'arr' (vr10), rank is 20 */
-/* Function 'read_m500x500' uses 24 total bytes of memory storage for vregs */
-/* Function 'read_m500x500': placing vreg storage at offset -24 from %rbp */
-/* Function 'read_m500x500': 32 bytes of local storage allocated in stack frame */
+/* Function 'read_m500x500' uses 16 total bytes of memory storage for vregs */
+/* Function 'read_m500x500': placing vreg storage at offset -16 from %rbp */
+/* Function 'read_m500x500': 16 bytes of local storage allocated in stack frame */
 	.section .text
 
 	.globl read_m500x500
 read_m500x500:
 	pushq    %rbp                /* enter    $0 */
 	movq     %rsp, %rbp
-	subq     $32, %rsp
+	subq     $16, %rsp
 	pushq    %r12
 	pushq    %rbx
 	movq     %rdi, %r12          /* mov_q    vr10, vr1 */
 	movl     $0, %ebx            /* mov_l    vr11, $0 */
 	jmp      .L1                 /* jmp      .L1 */
 .L0:
-	movl     %ebx, %r10d         /* sconv_lq vr12<%r9>, vr11 */
+	call     read_i64            /* call     read_i64 */
+	movl     %ebx, %r10d         /* sconv_lq vr13<%r9>, vr11 */
 	movslq   %r10d, %r10
 	movq     %r10, %r9
-	movq     %r9, %r10           /* mul_q    vr13<%r8>, vr12<%r9>, $8 */
+	movq     %r9, %r10           /* mul_q    vr14<%r8>, vr13<%r9>, $8 */
 	imulq    $8, %r10
 	movq     %r10, %r8
-	movq     %r12, %r10          /* add_q    vr14, vr10, vr13<%r8> */
+	movq     %r12, %r10          /* add_q    vr15<%rcx>, vr10, vr14<%r8> */
 	addq     %r8, %r10
-	movq     %r10, -8(%rbp)
-	call     read_i64            /* call     read_i64 */
-	movq     -8(%rbp), %r11      /* mov_q    (vr14), vr0 */
-	movq     %rax, (%r11)
-	movl     %ebx, %r10d         /* add_l    vr17<%r9d>, vr11, $1 */
+	movq     %r10, %rcx
+	movq     %rax, (%rcx)        /* mov_q    (vr15<%rcx>), vr0 */
+	movl     %ebx, %r10d         /* add_l    vr17<%edx>, vr11, $1 */
 	addl     $1, %r10d
-	movl     %r10d, %r9d
-	movl     %r9d, %ebx          /* mov_l    vr11, vr17<%r9d> */
+	movl     %r10d, %edx
+	movl     %edx, %ebx          /* mov_l    vr11, vr17<%edx> */
 .L1:
 	movl     %ebx, %r10d         /* cmplt_l  vr19<%r9d>, vr11, $250000 */
 	cmpl     $250000, %r10d
@@ -59,7 +58,7 @@ read_m500x500:
 .Lread_m500x500_return:
 	popq     %rbx                /* leave    $0 */
 	popq     %r12
-	addq     $32, %rsp
+	addq     $16, %rsp
 	popq     %rbp
 	ret                          /* ret       */
 /* allocate machine register %rbx to variable 'j' (vr14), rank is 48400 */
@@ -96,18 +95,18 @@ main:
 	movl     $0, %r14d           /* mov_l    vr13, $0 */
 	jmp      .L3                 /* jmp      .L3 */
 .L2:
-	leaq     -2000000(%rbp), %r10 /* localaddr vr18<%r9>, $4000000 */
+	leaq     -2000000(%rbp), %r10 /* localaddr vr19<%r9>, $4000000 */
 	movq     %r10, %r9
-	movl     %r14d, %r10d        /* sconv_lq vr19<%r8>, vr13 */
+	movl     %r14d, %r10d        /* sconv_lq vr20<%r8>, vr13 */
 	movslq   %r10d, %r10
 	movq     %r10, %r8
-	movq     %r8, %r10           /* mul_q    vr20<%rcx>, vr19<%r8>, $8 */
+	movq     %r8, %r10           /* mul_q    vr21<%rcx>, vr20<%r8>, $8 */
 	imulq    $8, %r10
 	movq     %r10, %rcx
-	movq     %r9, %r10           /* add_q    vr21<%rdx>, vr18<%r9>, vr20<%rcx> */
+	movq     %r9, %r10           /* add_q    vr22<%rdx>, vr19<%r9>, vr21<%rcx> */
 	addq     %rcx, %r10
 	movq     %r10, %rdx
-	movq     $0, (%rdx)          /* mov_q    (vr21<%rdx>), $0 */
+	movq     $0, (%rdx)          /* mov_q    (vr22<%rdx>), $0 */
 	movl     %r14d, %r10d        /* add_l    vr24<%esi>, vr13, $1 */
 	addl     $1, %r10d
 	movl     %r10d, %esi

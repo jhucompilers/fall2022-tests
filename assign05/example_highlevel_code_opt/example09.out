@@ -42,14 +42,14 @@ sum:
 	.globl main
 main:
 	enter    $12
-	localaddr vr11<%r9>, $0
-	add_q    vr15<%r8>, vr11<%r9>, $0
-	mov_l    (vr15<%r8d>), $1
-	add_q    vr21<%rcx>, vr11<%r9>, $4
-	mov_l    (vr21<%ecx>), $2
-	add_q    vr27<%rdx>, vr11<%r9>, $8
-	mov_l    (vr27<%edx>), $3
-	mov_q    vr1, vr11<%r9>
+	localaddr vr12<%r9>, $0
+	add_q    vr16<%r8>, vr12<%r9>, $0
+	mov_l    (vr16<%r8d>), $1
+	add_q    vr22<%rcx>, vr12<%r9>, $4
+	mov_l    (vr22<%ecx>), $2
+	add_q    vr28<%rdx>, vr12<%r9>, $8
+	mov_l    (vr28<%edx>), $3
+	mov_q    vr1, vr12<%r9>
 	mov_l    vr2, $3
 	call     sum
 	jmp      .Lmain_return

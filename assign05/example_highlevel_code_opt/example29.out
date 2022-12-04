@@ -24,13 +24,13 @@ read_m500x500:
 	mov_l    vr11, $0
 	jmp      .L1
 .L0:
-	sconv_lq vr12<%r9>, vr11
-	mul_q    vr13<%r8>, vr12<%r9>, $8
-	add_q    vr14, vr10, vr13<%r8>
 	call     read_i64
-	mov_q    (vr14), vr0
-	add_l    vr17<%r9d>, vr11, $1
-	mov_l    vr11, vr17<%r9d>
+	sconv_lq vr13<%r9>, vr11
+	mul_q    vr14<%r8>, vr13<%r9>, $8
+	add_q    vr15<%rcx>, vr10, vr14<%r8>
+	mov_q    (vr15<%rcx>), vr0
+	add_l    vr17<%edx>, vr11, $1
+	mov_l    vr11, vr17<%edx>
 .L1:
 	cmplt_l  vr19<%r9d>, vr11, $250000
 	cjmp_t   vr19<%r9d>, .L0
@@ -58,11 +58,11 @@ main:
 	mov_l    vr13, $0
 	jmp      .L3
 .L2:
-	localaddr vr18<%r9>, $4000000
-	sconv_lq vr19<%r8>, vr13
-	mul_q    vr20<%rcx>, vr19<%r8>, $8
-	add_q    vr21<%rdx>, vr18<%r9>, vr20<%rcx>
-	mov_q    (vr21<%rdx>), $0
+	localaddr vr19<%r9>, $4000000
+	sconv_lq vr20<%r8>, vr13
+	mul_q    vr21<%rcx>, vr20<%r8>, $8
+	add_q    vr22<%rdx>, vr19<%r9>, vr21<%rcx>
+	mov_q    (vr22<%rdx>), $0
 	add_l    vr24<%esi>, vr13, $1
 	mov_l    vr13, vr24<%esi>
 .L3:
