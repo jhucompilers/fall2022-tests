@@ -40,13 +40,11 @@ main:
 	addl     %r12d, %r13d
 	incl     %ebx
 .L3:
-	movl     %ebx, %r10d         /* cmplte_l vr24<%r9d>, vr11, $9 */
-	cmpl     $9, %r10d           /* cjmp_t   vr24<%r9d>, .L2 */
+	cmpl     $9, %ebx            /* cmplte_l vr24<%r9d>, vr11, $9 */
 	jle      .L2
 	incl     %r12d
 .L1:
-	movl     %r12d, %r10d        /* cmplte_l vr28<%r9d>, vr10, $9 */
-	cmpl     $9, %r10d           /* cjmp_t   vr28<%r9d>, .L0 */
+	cmpl     $9, %r12d           /* cmplte_l vr28<%r9d>, vr10, $9 */
 	jle      .L0
 	xorl     %r12d, %r12d        /* mov_l    vr10, $0 */
 	jmp      .L5                 /* jmp      .L5 */
@@ -66,14 +64,12 @@ main:
 	call     print_space         /* call     print_space */
 	incl     %ebx
 .L7:
-	movl     %ebx, %r10d         /* cmplte_l vr23<%r9d>, vr11, $9 */
-	cmpl     $9, %r10d           /* cjmp_t   vr23<%r9d>, .L6 */
+	cmpl     $9, %ebx            /* cmplte_l vr23<%r9d>, vr11, $9 */
 	jle      .L6
 	call     print_nl            /* call     print_nl */
 	incl     %r12d
 .L5:
-	movl     %r12d, %r10d        /* cmplte_l vr27<%r9d>, vr10, $9 */
-	cmpl     $9, %r10d           /* cjmp_t   vr27<%r9d>, .L4 */
+	cmpl     $9, %r12d           /* cmplte_l vr27<%r9d>, vr10, $9 */
 	jle      .L4
 	xorl     %eax, %eax          /* mov_l    vr0, $0 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */

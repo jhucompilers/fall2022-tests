@@ -36,8 +36,7 @@ sum:
 	addl     %edx, %r12d
 	incl     %ebx
 .L1:
-	movl     %ebx, %r10d         /* cmplt_l  vr21<%r9d>, vr12, vr11 */
-	cmpl     %r14d, %r10d        /* cjmp_t   vr21<%r9d>, .L0 */
+	cmpl     %r14d, %ebx         /* cmplt_l  vr21<%r9d>, vr12, vr11 */
 	jl       .L0
 	movl     %r12d, %eax         /* mov_l    vr0, vr13 */
 	jmp      .Lsum_return        /* jmp      .Lsum_return */

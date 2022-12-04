@@ -28,8 +28,7 @@ main:
 	addl     %ebx, %r12d
 	incl     %ebx
 .L1:
-	movl     %ebx, %r10d         /* cmplte_l vr16<%r9d>, vr11, vr10 */
-	cmpl     %r13d, %r10d        /* cjmp_t   vr16<%r9d>, .L0 */
+	cmpl     %r13d, %ebx         /* cmplte_l vr16<%r9d>, vr11, vr10 */
 	jle      .L0
 	movl     %r12d, %eax         /* mov_l    vr0, vr12 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */

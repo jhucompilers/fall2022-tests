@@ -28,8 +28,7 @@ main:
 	movl     %ebx, %r8d          /* add_l    vr15<%r8d>, vr10, $1 */
 	incl     %r8d
 	movl     %r8d, %ebx          /* mov_l    vr10, vr15<%r8d> */
-	movl     %r8d, %r10d         /* cmplt_l  vr16<%ecx>, vr15<%r8d>, vr11 */
-	cmpl     %r13d, %r10d        /* cjmp_t   vr16<%ecx>, .L0 */
+	cmpl     %r13d, %r8d         /* cmplt_l  vr16<%ecx>, vr15<%r8d>, vr11 */
 	jl       .L0
 	movl     %r12d, %eax         /* mov_l    vr0, vr12 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */

@@ -33,8 +33,7 @@ main:
 	incl     %r12d
 	incl     %ebx
 .L1:
-	movl     %ebx, %r10d         /* cmplt_l  vr31<%r9d>, vr10, $3 */
-	cmpl     $3, %r10d           /* cjmp_t   vr31<%r9d>, .L0 */
+	cmpl     $3, %ebx            /* cmplt_l  vr31<%r9d>, vr10, $3 */
 	jl       .L0
 	movl     $2, %ebx            /* mov_l    vr10, $2 */
 	jmp      .L3                 /* jmp      .L3 */
@@ -55,8 +54,7 @@ main:
 	call     print_nl            /* call     print_nl */
 	subl     $1, %ebx
 .L3:
-	movl     %ebx, %r10d         /* cmpgte_l vr27<%r9d>, vr10, $0 */
-	cmpl     $0, %r10d           /* cjmp_t   vr27<%r9d>, .L2 */
+	cmpl     $0, %ebx            /* cmpgte_l vr27<%r9d>, vr10, $0 */
 	jge      .L2
 	xorl     %eax, %eax          /* mov_l    vr0, $0 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */

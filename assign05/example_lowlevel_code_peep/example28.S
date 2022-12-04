@@ -35,8 +35,7 @@ read_m10x10:
 	movq     %rax, (%r12,%r9,8)  /* mul_q    vr14<%r8>, vr13<%r9>, $8 */
 	incl     %ebx
 .L1:
-	movl     %ebx, %r10d         /* cmplt_l  vr19<%r9d>, vr11, $100 */
-	cmpl     $100, %r10d         /* cjmp_t   vr19<%r9d>, .L0 */
+	cmpl     $100, %ebx          /* cmplt_l  vr19<%r9d>, vr11, $100 */
 	jl       .L0
 	jmp      .Lread_m10x10_return /* jmp      .Lread_m10x10_return */
 .Lread_m10x10_return:
@@ -80,8 +79,7 @@ main:
 	movq     $0, (%r9,%r8,8)     /* mul_q    vr19<%rcx>, vr18<%r8>, $8 */
 	incl     %r14d
 .L3:
-	movl     %r14d, %r10d        /* cmplt_l  vr24<%r9d>, vr11, $100 */
-	cmpl     $100, %r10d         /* cjmp_t   vr24<%r9d>, .L2 */
+	cmpl     $100, %r14d         /* cmplt_l  vr24<%r9d>, vr11, $100 */
 	jl       .L2
 	xorl     %r15d, %r15d        /* mov_l    vr13, $0 */
 	jmp      .L5                 /* jmp      .L5 */
@@ -120,18 +118,15 @@ main:
 	movq     %r9, (%r8)          /* mov_q    (vr21<%r8>), vr31<%r9> */
 	incl     %ebx
 .L9:
-	movl     %ebx, %r10d         /* cmplt_l  vr40<%r9d>, vr12, vr10 */
-	cmpl     %r12d, %r10d        /* cjmp_t   vr40<%r9d>, .L8 */
+	cmpl     %r12d, %ebx         /* cmplt_l  vr40<%r9d>, vr12, vr10 */
 	jl       .L8
 	incl     %r14d
 .L7:
-	movl     %r14d, %r10d        /* cmplt_l  vr43<%r9d>, vr11, vr10 */
-	cmpl     %r12d, %r10d        /* cjmp_t   vr43<%r9d>, .L6 */
+	cmpl     %r12d, %r14d        /* cmplt_l  vr43<%r9d>, vr11, vr10 */
 	jl       .L6
 	incl     %r15d
 .L5:
-	movl     %r15d, %r10d        /* cmplt_l  vr46<%r9d>, vr13, vr10 */
-	cmpl     %r12d, %r10d        /* cjmp_t   vr46<%r9d>, .L4 */
+	cmpl     %r12d, %r15d        /* cmplt_l  vr46<%r9d>, vr13, vr10 */
 	jl       .L4
 	xorl     %r14d, %r14d        /* mov_l    vr11, $0 */
 	jmp      .L11                /* jmp      .L11 */
@@ -143,8 +138,7 @@ main:
 	call     print_nl            /* call     print_nl */
 	incl     %r14d
 .L11:
-	movl     %r14d, %r10d        /* cmplt_l  vr23<%r9d>, vr11, $100 */
-	cmpl     $100, %r10d         /* cjmp_t   vr23<%r9d>, .L10 */
+	cmpl     $100, %r14d         /* cmplt_l  vr23<%r9d>, vr11, $100 */
 	jl       .L10
 	xorl     %eax, %eax          /* mov_l    vr0, $0 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */

@@ -22,8 +22,7 @@ main:
 	call     print_nl            /* call     print_nl */
 	subl     $1, %ebx
 .L1:
-	movl     %ebx, %r10d         /* cmpgt_l  vr14<%r9d>, vr10, $0 */
-	cmpl     $0, %r10d           /* cjmp_t   vr14<%r9d>, .L0 */
+	cmpl     $0, %ebx            /* cmpgt_l  vr14<%r9d>, vr10, $0 */
 	jg       .L0
 	xorl     %eax, %eax          /* mov_l    vr0, $0 */
 	jmp      .Lmain_return       /* jmp      .Lmain_return */
