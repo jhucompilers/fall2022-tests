@@ -5,12 +5,12 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-if [ "$ASSIGN04_DIR" = "" ]; then
-  echo "ASSIGN04_DIR is not set"
+if [ "$ASSIGN05_DIR" = "" ]; then
+  echo "ASSIGN05_DIR is not set"
   exit 1
 fi
 
-nearly_cc="$ASSIGN04_DIR/nearly_cc"
+nearly_cc="$ASSIGN05_DIR/nearly_cc"
 if [ ! -x $nearly_cc ]; then
   echo "$nearly_cc doesn't exist or isn't executable"
   exit 1
